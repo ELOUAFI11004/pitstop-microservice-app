@@ -16,7 +16,7 @@
             width="250"
           />
           <span class="text-h6 black--text text-center mt-5 font-weight-light"
-            >We're sorry workshop service is offline</span
+            >Vehicle service is temporarily unavailable.</span
           >
         </v-col>
       </v-row>
@@ -95,7 +95,7 @@
                       .utc(
                         moment
                           .duration(moment(item.end).diff(moment(item.start)))
-                          .as("milliseconds")
+                          .as("milliseconds"),
                       )
                       .format("HH:mm:ss")
                   }}
@@ -154,7 +154,11 @@
                   v-model="date"
                   color="primary"
                   type="day"
-                  :events="getMaintenanceJobs.filter(function(job) { return job.status === 'planned'})"
+                  :events="
+                    getMaintenanceJobs.filter(function (job) {
+                      return job.status === 'planned';
+                    })
+                  "
                 ></v-calendar>
               </v-sheet>
             </v-tab-item>
@@ -188,15 +192,15 @@ export default {
       {
         text: "License number",
         value: "license",
-        align: "start"
+        align: "start",
       },
       { text: "Start Time", value: "start" },
       { text: "End Time", value: "end" },
-      { text: "Duration", value: "duration", sortable: false, },
-      { text: "Description", value: "name", sortable: false, },
+      { text: "Duration", value: "duration", sortable: false },
+      { text: "Description", value: "name", sortable: false },
       { text: "Status", value: "status" },
-      { text: "Actions", value: "actions", sortable: false, },
-      { text: "", value: "details", sortable: false, },
+      { text: "Actions", value: "actions", sortable: false },
+      { text: "", value: "details", sortable: false },
     ],
   }),
   computed: {
